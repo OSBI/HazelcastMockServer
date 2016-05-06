@@ -9,7 +9,11 @@
             30
         </session-timeout>
     </session-config>
-    
+   <!-- <servlet>
+        <servlet-name>CrunchifyExample</servlet-name>
+        <servlet-class>servlets.HazelcastImpl</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>-->
     <filter>
         <filter-name>hazelcast-filter</filter-name>
         <filter-class>com.hazelcast.web.WebFilter</filter-class>
@@ -20,6 +24,11 @@
         <init-param>
             <param-name>map-name</param-name>
             <param-value>my-sessions</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config-location</param-name>
+            <param-value>/WEB-INF/hazelcast.xml</param-value>
         </init-param>
         <!--
             How is your load-balancer configured?
@@ -68,17 +77,17 @@
             Do you want to use an existing HazelcastInstance?
             Default is null.
         -->
-        <init-param>
+     <!--   <init-param>
             <param-name>instance-name</param-name>
             <param-value>default</param-value>
-        </init-param>
+        </init-param>-->
         <!--
             Do you want to connect as a client to an existing cluster?
             Default is false.
         -->
         <init-param>
             <param-name>use-client</param-name>
-            <param-value>true</param-value>
+            <param-value>false</param-value>
         </init-param>
         <!--
             Client configuration location;
